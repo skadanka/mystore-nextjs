@@ -1,5 +1,6 @@
 import { APP_DESCRIPTION, APP_NAME, APP_URL } from "@/lib/constants";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 export const metadata = {
   title: {
@@ -16,8 +17,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className='min-h-screen'>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className='min-h-screen'>
+        <ThemeProvider 
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange  
+          >
+            
+          {children}
+        </ThemeProvider>
+        </body>
     </html>
   )
 }
