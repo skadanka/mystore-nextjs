@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import ProductList from "@/components/ui/shared/product/product-list";
 import sampleData from "@/public/sample-data/db/sample-data";
 
@@ -18,7 +17,7 @@ export default async function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <ProductList data={updatedProducts} title="Featured Products" />
+          <ProductList data={updatedProducts} title="Featured Products"/>
       </main>
     </div>
   );
