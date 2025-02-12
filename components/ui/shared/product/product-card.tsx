@@ -1,4 +1,4 @@
-import Product from '@/types/product';
+import { Product } from '@/types';
 import ProductPrice from './product-price';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import Link from 'next/link';
@@ -39,7 +39,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                 <Link href={`/product/${product.slug}`}>
                     {
                         product.images && product.images.length > 0 ? (
-                            <Image src={product.images[0]} alt={`${product.name} image`} width={360} height={360} />
+                            <Image src={`${product.images[0]}`} alt={`${product.name} image`} width={360} height={360} />
                         ) : (
                             <p>No images found for {product.name}</p>
                         )}
@@ -50,7 +50,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                 {/* {item.banner && <Image src={item.banner} alt={`${item.name} banner`} width={500} height={500} />} */}
 
                 <p className='text-gray-600'>{product.description}</p>
-                <ProductPrice price={product.price} />
+                <ProductPrice price={Number(product.price)} />
                 <p>Category: {product.category}</p>
                 <p>Brand: {product.brand}</p>
                 {product.isFeatured && <p>Featured Product</p>}

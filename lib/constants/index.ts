@@ -6,3 +6,5 @@ const currentYear = new Date().getFullYear();
 export const APP_COPYRIGHT = process.env.APP_COPYRIGHT || `&copy; ${currentYear} ${APP_NAME} Site. All rights reserved.`;
 export const APP_LOGO = process.env.APP_LOGO || "/store-shopper-svgrepo-com.svg";
 export const APP_URL = process.env.APP_URL || "http://localhost:3000";
+
+export const LATEST_PRODUCTS_COUNT = Number(process.env.LATEST_PRODUCTS_COUNT) || 5;
