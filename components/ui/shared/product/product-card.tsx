@@ -8,7 +8,7 @@ import { StarIcon, StarHalfIcon } from 'lucide-react';
 
 const MAX_RATING = 5;
 
-const getRatingStars = (rating: number) => {
+const getRatingStars = (rating: number) => { 
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
     const emptyStars = MAX_RATING - fullStars - (hasHalfStar ? 1 : 0);
