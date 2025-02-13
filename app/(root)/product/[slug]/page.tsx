@@ -17,7 +17,7 @@ export default async function ProductDetailsPage(props: { params: Promise<{ slug
                 
                 {/* Product Images */}
                 <div className="col-span-1 flex justify-center">
-                    <div className="w-full h-96 bg-gray-100 rounded-lg flex justify-center items-center shadow-md">
+                    <div className="w-full">
                         {/* Placeholder for Image */}
                         {/* <span className="text-gray-400">Product Image</span> */}
                         <ProductImages images={product.images} />
