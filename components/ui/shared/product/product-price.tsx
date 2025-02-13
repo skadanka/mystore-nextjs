@@ -1,6 +1,6 @@
 const ProductPrice = ({ price, className }: { price: number, className?: string }) => {
     return (
-        <p className={`flex items-center gap-x-0.5 ${className}`}>Price:  &nbsp;
+        <p className={`flex items-center gap-x-0.5 ${className}`}>
             <span className="relative text-xs -top-1 text-gray-600">$</span>
             <span className='font-semibold text-xl'>{Math.floor(price)}</span>
             <span className="relative text-xs -top-1 text-gray-600">
