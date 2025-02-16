@@ -1,5 +1,5 @@
 import ProductCard from './product-card';
-import Product from '@/types/product';
+import { Product } from '@/types/product';
 
 export default function ProductList({ data, title, limit }: { data: Product[], title?: string, limit?: number }) {
     data = limit ? data.slice(0, limit) : data;
