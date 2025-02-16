@@ -1,6 +1,7 @@
 import ProductList from "@/components/ui/shared/product/product-list";
 // import sampleData from "@/public/assets/sample-data/db/sample-data";
-import { getLatestProduct } from "@/lib/actions/product.action";
+import { getLatestProduct} from "@/lib/actions/product.action";
+import { Product } from  "@/types/index";
 
 export const metadata = {
   title: "Home",
@@ -16,7 +17,7 @@ export default async function Home() {
   //   banner: product.banner ? `/assets/sample-data/images/${product.banner}` : null,
   // }));
 
-  const products = await getLatestProduct();
+  const products: Product[] = await getLatestProduct();
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
