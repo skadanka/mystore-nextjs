@@ -1,4 +1,66 @@
+import { hashSync } from 'bcrypt-ts-edge';
+
 const sampleData = {
+  users: [
+    {
+      "id": "ckxyz123456789abcdef",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "emailVerified": "2024-02-06T12:30:45.123Z",
+      "image": "https://example.com/images/john-doe.jpg",
+      "password": hashSync('123456', 10),
+      "role": "admin",
+      "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "zip": "10001",
+        "country": "USA"
+      },
+      "paymentMethod": "Visa **** 4242",
+      "createdAt": "2024-02-01T08:15:30.456Z",
+      "updatedAt": "2024-02-06T10:45:30.789Z"
+    },
+    {
+      "id": "ckxyz987654321abcdefg",
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "emailVerified": null,
+      "image": "https://example.com/images/jane-smith.jpg",
+      "password": hashSync('123456', 10),
+      "role": "user",
+      "address": {
+        "street": "456 Elm St",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90001",
+        "country": "USA"
+      },
+      "paymentMethod": "MasterCard **** 1234",
+      "createdAt": "2024-01-20T14:20:10.654Z",
+      "updatedAt": "2024-02-06T11:25:30.123Z"
+    },
+    {
+      "id": "ckxyz567890abcdef1234",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "emailVerified": "2024-02-03T09:50:25.789Z",
+      "image": "https://example.com/images/alice-johnson.jpg",
+      "password": hashSync('123456', 10),
+      "role": "moderator",
+      "address": {
+        "street": "789 Oak St",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60601",
+        "country": "USA"
+      },
+      "paymentMethod": "PayPal",
+      "createdAt": "2024-01-15T10:10:50.987Z",
+      "updatedAt": "2024-02-06T12:00:45.456Z"
+    }
+  ]
+  ,
   products: [
     {
       name: 'Polo Sporting Stretch Shirt',
