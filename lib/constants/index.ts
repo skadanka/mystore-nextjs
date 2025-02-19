@@ -8,3 +8,8 @@ export const APP_LOGO = process.env.APP_LOGO || "/assets/store-shopper-svgrepo-c
 export const APP_URL = process.env.APP_URL || "http://localhost:3000";
 
 export const LATEST_PRODUCTS_COUNT = Number(process.env.LATEST_PRODUCTS_COUNT) || 5;
+
+export const signInDefaultValues = {
+    email: '',
+    password: ''
+}

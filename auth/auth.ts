@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/db/prisma";
 import { compare } from "bcrypt-ts-edge";
-
+import { signIn, signOut } from "next-auth/react";
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -71,3 +71,4 @@ export const authOptions: NextAuthOptions = {
 
 const authHandler = NextAuth(authOptions);
 export { authHandler as GET, authHandler as POST };
+export { signIn, signOut}
