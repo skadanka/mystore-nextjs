@@ -1,14 +1,18 @@
+'use client';
+
+import { SessionProvider } from 'next-auth/react';
 import React from 'react';
 
-
-function Layout({ children }: { children: React.ReactNode }) {
+function SignInLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div className='min-h-screen w-full grid place-items-center'>
-            <main className='px-20'>
-                {children}
-            </main>
-        </div>
+            <SessionProvider>
+                <div className='min-h-screen w-full grid place-items-center'>
+                    <main className='px-20'>
+                        {children}
+                    </main>
+                </div>
+            </SessionProvider>
     );
 }
 
-export default Layout;
+export default SignInLayout;

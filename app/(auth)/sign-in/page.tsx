@@ -22,7 +22,12 @@ export default async function SignInPage() {
                     <head>
                         <meta httpEquiv="refresh" content="0;url=/" />
                     </head>
-                    <body>Redirecting...</body>
+                    <body className="grid place-items-center min-h-screen">
+                        <h1 className="text-lg font-semibold font-serif">
+                            🚀 Already Signed In, Redirecting... 🚀
+                        </h1>
+                    </body>
+
                 </html>
             );
         }

@@ -8,8 +8,7 @@ export default function CredentialsSignInForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { data: session, status } = useSession(); // ✅ Client-side session check
-
+  const { data: session, status } = useSession(); 
 
   useEffect(() => {
     if (status === "authenticated") {
