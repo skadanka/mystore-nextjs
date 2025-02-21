@@ -31,7 +31,7 @@ export default async function ProductDetailsPage(props: { params: Promise<{ slug
                         <h1 className="text-2xl font-bold text-gray-900 mt-2">{product.name}</h1>
                         <p className="text-gray-500">{product.brand}</p>
                         <p className="text-yellow-500 mt-1">
-                            ⭐ {product.rating} / 5 ({product.numReviews} Reviews)
+                            ⭐ {product.rating.toString()} / 5 ({product.numReviews} Reviews)
                         </p>
                     </div>
 
