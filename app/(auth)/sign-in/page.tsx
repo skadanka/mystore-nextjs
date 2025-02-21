@@ -6,7 +6,6 @@ import { APP_NAME } from '@/lib/constants';
 import CredentialsSignInForm from './credentials-signin-form';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/auth/auth';
-import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
     title: 'Sign In',
@@ -17,9 +16,15 @@ export default async function SignInPage() {
     try {
         const session = await getServerSession(authOptions);
 
-        if (session) {
-            redirect('/'); // ✅ Redirect if already logged in
-            return null;
+        if (session?.user) {
+            return (
+                <html>
+                    <head>
+                        <meta httpEquiv="refresh" content="0;url=/" />
+                    </head>
+                    <body>Redirecting...</body>
+                </html>
+            );
         }
 
         return (
@@ -41,7 +46,6 @@ export default async function SignInPage() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
-                        {/* ✅ Client Component for Sign-In Form */}
                         <CredentialsSignInForm />
                     </CardContent>
                 </Card>

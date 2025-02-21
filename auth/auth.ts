@@ -5,7 +5,6 @@ import prisma from "@/db/prisma";
 import { compare } from "bcryptjs";
 import { getServerSession } from "next-auth";
 
-// ✅ NextAuth Configuration
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   pages: { signIn: "/sign-in", error: "/sign-in" },
@@ -20,23 +19,28 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
-        // 🔍 Fetch user from database
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email },
-        });
+        try {
+          // 🔍 Fetch user from database
+          const user = await prisma.user.findUnique({
+            where: { email: credentials.email },
+          });
 
-        if (!user || !user.password) return null;
+          if (!user || !user.password) return null;
 
-        // 🔒 Verify password
-        const isPasswordValid = await compare(credentials.password, user.password);
-        if (!isPasswordValid) return null;
+          // 🔒 Verify password
+          const isPasswordValid = await compare(credentials.password, user.password);
+          if (!isPasswordValid) return null;
 
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: (user.role ?? "user") as "user" | "admin",
-        };
+          return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: (user.role ?? "user") as "user" | "admin",
+          };
+        } catch (error) {
+          console.error("Auth error:", error);
+          return null;
+        }
       },
     }),
   ],
@@ -58,12 +62,7 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-// ✅ Create authentication handlers
 const authHandler = NextAuth(authOptions);
 export { authHandler as GET, authHandler as POST };
 
-// ✅ Export authentication utilities
-export { signIn as nextAuthSignIn, signOut as nextAuthSignOut } from "next-auth/react";
-
-// ✅ Export helper for getting server-side session
 export const getAuthSession = () => getServerSession(authOptions);
