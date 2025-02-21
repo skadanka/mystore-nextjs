@@ -12,37 +12,43 @@ export const metadata: Metadata = {
     title: 'Sign In',
 };
 
-// ✅ Server Component (Checks session using getServerSession)
+// ✅ Catch potential errors when fetching session
 export default async function SignInPage() {
-    const session = await getServerSession(authOptions);
+    try {
+        const session = await getServerSession(authOptions);
 
-    if (session) {
-        redirect('/'); // ✅ Redirect if already logged in
+        if (session) {
+            redirect('/'); // ✅ Redirect if already logged in
+            return null;
+        }
+
+        return (
+            <div className='flex justify-center items-center min-h-screen'>
+                <Card className='w-full max-w-md p-6 shadow-lg border rounded-lg'>
+                    <CardHeader className='flex flex-col items-center gap-4'>
+                        <Link href='/' className='flex justify-center'>
+                            <Image
+                                src='/assets/store-shopper-svgrepo-com.svg'
+                                width={80}
+                                height={80}
+                                alt={`${APP_NAME} logo`}
+                                priority
+                            />
+                        </Link>
+                        <CardTitle className='text-center text-2xl font-semibold'>Sign In</CardTitle>
+                        <CardDescription className='text-center text-gray-600'>
+                            Sign in to access your account
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                        {/* ✅ Client Component for Sign-In Form */}
+                        <CredentialsSignInForm />
+                    </CardContent>
+                </Card>
+            </div>
+        );
+    } catch (error) {
+        console.error("Sign-in page error:", error); // ✅ Log error details
+        return <p className="text-red-500 text-center">Something went wrong. Please try again.</p>;
     }
-
-    return (
-        <div className='flex justify-center items-center min-h-screen'>
-            <Card className='w-full max-w-md p-6 shadow-lg border rounded-lg'>
-                <CardHeader className='flex flex-col items-center gap-4'>
-                    <Link href='/' className='flex justify-center'>
-                        <Image
-                            src='/assets/store-shopper-svgrepo-com.svg'
-                            width={80}
-                            height={80}
-                            alt={`${APP_NAME} logo`}
-                            priority
-                        />
-                    </Link>
-                    <CardTitle className='text-center text-2xl font-semibold'>Sign In</CardTitle>
-                    <CardDescription className='text-center text-gray-600'>
-                        Sign in to access your account
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                    {/* ✅ Client Component for Sign-In Form */}
-                    <CredentialsSignInForm />
-                </CardContent>
-            </Card>
-        </div>
-    );
 }
