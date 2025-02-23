@@ -12,7 +12,12 @@ export const metadata: Metadata = {
 };
 
 // ✅ Catch potential errors when fetching session
-export default async function SignInPage() {
+export default async function SignInPage(props: {
+    searchParams: Promise<{
+        callbackUrl: string}>
+}) {
+    const { callbackUrl } = await props.searchParams;
+
     try {
         const session = await getServerSession(authOptions);
 
@@ -20,7 +25,7 @@ export default async function SignInPage() {
             return (
                 <html>
                     <head>
-                        <meta httpEquiv="refresh" content="0;url=/" />
+                        <meta httpEquiv="refresh" content={callbackUrl || "0;url=/"} />
                     </head>
                     <body className="grid place-items-center min-h-screen">
                         <h1 className="text-lg font-semibold font-serif">

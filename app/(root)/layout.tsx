@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@/components/ui/shared/header';
+import Header from '@/components/ui/shared/header/header';
 import Footer from '@/components/ui/footer';
 
 function Layout({ children }: { children: React.ReactNode }) {

@@ -3,12 +3,16 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 
 export default function CredentialsSignInForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { data: session, status } = useSession(); 
+  
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
 
   useEffect(() => {
     if (status === "authenticated") {
@@ -40,6 +44,7 @@ export default function CredentialsSignInForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <input type='hidden' name="callbackUrl" value={callbackUrl}/>
       {error && <p className="text-red-500 text-center">{error}</p>}
       <input name="email" type="email" placeholder="Email" required className="p-2 border rounded" />
       <input name="password" type="password" placeholder="Password" required className="p-2 border rounded" />
