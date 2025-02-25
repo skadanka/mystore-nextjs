@@ -1,6 +1,6 @@
 import ProductList from "@/components/ui/shared/product/product-list";
 // import sampleData from "@/public/assets/sample-data/db/sample-data";
-import { getLatestProduct} from "@/lib/actions/product.action";
+import { getLatestProduct} from "@/app/actions/product.action";
 import { Product } from  "@/types/index";
 
 export const metadata = {

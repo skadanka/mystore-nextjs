@@ -3,12 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ProductPrice from "@/components/ui/shared/product/product-price";
 import ProductImages from "@/components/ui/shared/product/products-images";
-import { getProductBySlug } from "@/lib/actions/product.action";
+import { getProductBySlug } from "@/app/actions/product.action";
 import { notFound } from "next/navigation";
 
 export default async function ProductDetailsPage(props: { params: Promise<{ slug: string }> }) {
     const { slug } = await props.params;
     const product = await getProductBySlug(slug);
+
     if (!product) return notFound();
 
     return (

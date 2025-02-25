@@ -3,6 +3,8 @@ import { PrismaNeon } from '@prisma/adapter-neon';
 import { PrismaClient } from '@prisma/client';
 import ws from 'ws';
 
+
+
 // Configure Neon to use WebSockets
 neonConfig.webSocketConstructor = ws;
 
@@ -13,6 +15,5 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const adapter = new PrismaNeon(pool);
 
 // Instantiate the Prisma Client with the adapter
-const prisma = new PrismaClient({ adapter });
+export const prisma = new PrismaClient({ adapter });
 
-export default prisma;

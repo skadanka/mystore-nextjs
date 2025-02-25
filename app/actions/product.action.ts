@@ -1,6 +1,6 @@
 "use server";
 
-import prisma  from "@/db/prisma";
+import { prisma }  from "@/lib/prisma";
 import { LATEST_PRODUCTS_COUNT } from "@/lib//constants";
 
 // Get latest products
